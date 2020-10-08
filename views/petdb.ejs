@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Endless Pawsabilities</title>
+  </head>
+  <body>
+
+    <style media="screen">
+      td{
+        border: 1px solid black;
+      }
+    </style>
+    <table>
+    <% for(var i=0; i<petlistings.length; i++) {%>
+      <tr>
+        <td><%= petlistings[i].petName %></td>
+        <td><%= petlistings[i].type %></td>
+        <td><%= petlistings[i].caption %></td>
+        <td><%= petlistings[i].description %></td>
+        <td><%= petlistings[i].age %></td>
+        <td><%= petlistings[i].weight %></td>
+        <td><%= petlistings[i].city %></td>
+        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+        <td> <a href="/<%= petlistings[i].petName %>listing">update listing</a> </td>
+      </tr>
+      <% } %>
+    </table>
+    <script type="text/javascript" src="main.js">
+
+    </script>
+  </body>
+</html>

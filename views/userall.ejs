@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
+  <title>Endless Pawsabilities</title>
+</head>
+<body>
+  <head>
+    <!-- Site Title-->
+    <title>Endless Pawsabilities</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,700,400italic%7CPoppins:300,400,500,700">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+    <!-- Page-->
+    <div class="page">
+      <div class="page-loader">
+        <div class="brand-name"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/>
+        </div>
+        <div class="page-loader-body">
+          <div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <header class="page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-default" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-stick-up-clone="true" data-md-stick-up-offset="190px" data-lg-stick-up-offset="190px">
+
+            <div class="rd-navbar-inner">
+              <!-- RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                <!-- RD Navbar Brand-->
+                <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/></a></div>
+              </div>
+              <!-- RD Navbar Nav-->
+              <div class="rd-navbar-nav-wrap">
+                <ul class="rd-navbar-nav">
+                  <li><a href="index.html">Home</a>
+                  </li>
+                  <li><a href="about-us.html">About Us</a>
+                  </li>
+                  <li><a href="adopt-a-pet.html">Adopt a Pet</a>
+                    <ul class="rd-navbar-dropdown tabs-nav">
+                      <li><a href="adopt-a-pet.html#adopt-cats">Adopt cats</a>
+                      </li>
+                      <li><a href="adopt-a-pet.html#adopt-dogs">Adopt dogs</a>
+                      </li>
+                      <li><a href="adopt-a-pet.html#adopt-small-pets">Adopt small pets</a>
+                      </li>
+                      <li><a href="single-page-pets.html">Single Page Pets</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Breadcrumbs & Page title-->
+      <div class="page-title">
+        <div class="page-title-text">Your Applications</div>
+      </div>
+
+  <style media="screen">
+    li{
+d      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+
+  <div >
+    <% for(var i=0; i<applications.length; i++) {%>
+      <% if(applications[i].userEmail === user.local.email ) {%>
+        <ul>
+          <li><%= applications[i].userName %></li>
+          <li><%= applications[i].userEmail %></li>
+          <li><%= applications[i].userNumber %></li>
+          <li><%= applications[i].userAddress %></li>
+          <li><%= applications[i].petName %></li>
+          <li><%= applications[i].ownPets %></li>
+          <li><%= applications[i].schedule %></li>
+          <li><%= applications[i].vet %></li>
+          <li><%= applications[i].home %></li>
+          <li><%= applications[i].roommates %></li>
+          <li><%= applications[i].behavior %></li>
+          <li><%= applications[i].reference %></li>
+          <% if(applications[i].approval === true ) {%>
+            <span style="color: lightgreen;" ><i class="fas fa-check"></i></span>
+          <% } else if (applications[i].approval === false) {%>{
+          <span style="color: red;"><i class="fas fa-times"></i></span>
+            <% } else {%>{
+              <span style="color: darkblue;"><i class="fas fa-clock"></i></span>
+            <% } %>
+        </ul>
+      <% } %>
+    <% } %>
+  </div>
+  <script type="text/javascript" src="main.js"></script>
+  <script src="js/core.min.js"></script>
+  <script src="js/script.js"></script>
+  </body>
+  </html>
