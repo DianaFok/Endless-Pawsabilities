@@ -1,5 +1,5 @@
 module.exports = function(app, passport, db, multer, ObjectId) {
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer'); //lets us use nodemailer
 // Image Upload Code =========================================================================
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -10,7 +10,6 @@ var storage = multer.diskStorage({
     }
 });
 var upload = multer({storage: storage});
-
 
 // normal routes ===============================================================
 
@@ -23,9 +22,9 @@ app.get('/indexlogin', function(req, res) {
     res.render('indexlogin.ejs');
 });
 
-// app.get('/test', function(req, res) {
-//     res.render('test.ejs');
-// });
+app.get('/smallAniFeed', function(req, res) {
+    res.render('smallAniFeed.ejs');
+});
 
 // TEST/Application FORM SECTION =========================
 app.get('/test', isLoggedIn, function(req, res) {
@@ -40,6 +39,8 @@ app.get('/test', isLoggedIn, function(req, res) {
 });
 
 // User submits app SECTION =========================
+//renders page and gets info ->passport(unique user's posting)
+//connected to applications bc we're still posting to this collection
 app.get('/userform', isLoggedIn, function(req, res) {
     let uId = ObjectId(req.session.passport.user)
     db.collection('applications').find({'posterId': uId}).toArray((err, result) => {
@@ -87,18 +88,6 @@ app.get('/petdb', isLoggedIn, function(req, res) {
     })
 });
 
-// LAVENDAR UPDATE SECTION =========================
-app.get('/tofulisting', isLoggedIn, function(req, res) {
-    let uId = ObjectId(req.session.passport.user)
-    db.collection('petlistings').find({'petName': "Tofu"}).toArray((err, result) => {
-      if (err) return console.log(err)
-      res.render('tofulisting.ejs', {
-        user : req.user,
-        petlistings: result
-      })
-    })
-});
-
 // PROFILE SECTION =========================
 app.get('/profile', isLoggedIn, function(req, res) {
     let uId = ObjectId(req.session.passport.user)
@@ -111,12 +100,24 @@ app.get('/profile', isLoggedIn, function(req, res) {
     })
 });
 
-// Feed with user logged in =========================
+// CAT Feed with user logged in =========================
 app.get('/loggedinfeed', isLoggedIn, function(req, res) {
     let uId = ObjectId(req.session.passport.user)
-    db.collection('petlistings').find({'posterId': uId }).toArray((err, result) => {
+    db.collection('petlistings').find({"type": "Cat"}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('loggedinfeed.ejs', {
+        user : req.user,
+        petlistings: result
+      })
+    })
+});
+
+// Dog Feed with user logged in =========================
+app.get('/loggedindogfeed', isLoggedIn, function(req, res) {
+    let uId = ObjectId(req.session.passport.user)
+    db.collection('petlistings').find({"type": "Dog"}).toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('loggedindogfeed.ejs', {
         user : req.user,
         petlistings: result
       })
@@ -137,6 +138,7 @@ app.get('/favorites', isLoggedIn, function(req, res) {
 });
 
 // CAT FEED PAGE =========================
+//find method displays types of animals
 app.get('/feed', function(req, res) {
     db.collection('petlistings').find({"type": "Cat"}).toArray((err, result) => {
       if (err) return console.log(err)
@@ -157,30 +159,6 @@ app.get('/dogFeed', function(req, res) {
       })
     })
 });
-
-// DOG FEED PAGE =========================
-// app.get('/feed', function(req, res) {
-//     db.collection('petlistings').find({"type": "cat"}).toArray((err, result) => {
-//       if (err) return console.log(err)
-//       res.render('feed.ejs', {
-//         user : req.user,
-//         petlistings: result
-//       })
-//     })
-// });
-
-
-// INDIVIDUAL POST PAGE =========================
-// app.get('/post/:zebra', function(req, res) {
-//     let postId = ObjectId(req.params.zebra)
-//     console.log(postId);
-//     db.collection('posts').find({_id: postId}).toArray((err, result) => {
-//       if (err) return console.log(err)
-//       res.render('post.ejs', {
-//         posts: result
-//       })
-//     })
-// });
 
 //Create Post =========================================================================
 app.post('/qpPost', upload.single('file-to-upload'), (req, res, next) => {
@@ -203,6 +181,11 @@ app.post('/submitForm', (req, res, next) => {
 
 // const userEmail = user.local.email
 
+//ADDING FAVORITES NOT GETTING
+//updating via email&petname -> telling backend to find document with these two conditions
+//but doesn't exist so upsert is set to true -> automatically create doc that it does match (NOW it exists)
+//all info (textnodes) will be added to this document AKA cloning listing except adding own userEmail
+//have petname so it doesn't clone again
 app.put('/favorites', (req, res) => {
   var user  = req.user;
   let uId = ObjectId(req.session.passport.user)
@@ -230,20 +213,22 @@ app.put('/favorites', (req, res) => {
   })
 })
 
+//nodemailer = service (NPM package) configuration
 app.put('/approve', (req, res) => {
   var transport = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-      user: "endlesspawsabilities1@outlook.com",
+      user: "endlesspawsabilities1@outlook.com", //where we're sending emails from
       pass: "09876543!"
     }
   });
 
+//OBJECT {} -> template/configuration for creating a message
   const message = {
       from: 'endlesspawsabilities1@outlook.com', // Sender address
       to: req.body.userEmail,         // List of recipients
       subject: 'Your pet adoption application has been approved, congrats!', // Subject line
-      text: 'Here is your image! poop', // Plain text body of the email i.e. steps for next adoption phase COVID???
+      text: 'Here is your image!', // Plain text body of the email i.e. steps for next adoption phase COVID???
       // html: 'Embedded image: <img src=""/>',
       // attachments: [{
       //     filename: 'image.png',
@@ -251,8 +236,7 @@ app.put('/approve', (req, res) => {
       //     cid: 'unique@nodemailer.com' //same cid value as in the html img src
       // }]
   };
-
-    transport.sendMail(message, function(err, info) {
+    transport.sendMail(message, function(err, info) { //using transport variable to use sendmail method -> send approved email to client
       if (err) {
         console.log(err)
       } else {
@@ -260,6 +244,7 @@ app.put('/approve', (req, res) => {
       }
   });
 
+//finds info -> then updates doc and inserts approval/deny/pending
   db.collection('applications').findOneAndUpdate({userName: req.body.userName, petName: req.body.petName}, {
     $set: {
       approval: true
@@ -303,26 +288,26 @@ app.put('/pending', (req, res) => {
   })
 })
 
-app.put('/saveChanges', (req, res) => {
-  db.collection('petlistings')
-  .findOneAndUpdate({petName: req.body.petName}, {
-    $set: {
-      petName: req.body.petName,
-      type: req.body.type,
-      caption: req.body.caption,
-      description: req.body.description,
-      age: req.body.age,
-      weight: req.body.weight,
-      city: req.body.city
-    }
-  }, {
-    sort: {_id: -1},
-    upsert: false
-  }, (err, result) => {
-    if (err) return res.send(err)
-    res.send(result)
-  })
-})
+// app.put('/saveChanges', (req, res) => {
+//   db.collection('petlistings')
+//   .findOneAndUpdate({petName: req.body.petName}, {
+//     $set: {
+//       petName: req.body.petName,
+//       type: req.body.type,
+//       caption: req.body.caption,
+//       description: req.body.description,
+//       age: req.body.age,
+//       weight: req.body.weight,
+//       city: req.body.city
+//     }
+//   }, {
+//     sort: {_id: -1},
+//     upsert: false
+//   }, (err, result) => {
+//     if (err) return res.send(err)
+//     res.send(result)
+//   })
+// })
 
 // app.delete('/delete', (req, res) => {
 //   db.collection('petlistings').findOneAndDelete({petName: req.body.petName}, (err, result) => {
@@ -348,9 +333,20 @@ app.get('/logout', function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
         });
 
-        // process the login form
+        app.get('/adminlogin', function(req, res) {
+            res.render('adminlogin.ejs', { message: req.flash('loginMessage') });
+        });
+
+        // process the USER login form
         app.post('/login', passport.authenticate('local-login', {
             successRedirect : 'indexlogin', // redirect to the secure profile section
+            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+
+        // process the ADMIN login form
+        app.post('/adminlogin', passport.authenticate('local-login', {
+            successRedirect : 'test', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));

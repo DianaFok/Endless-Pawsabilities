@@ -21,7 +21,7 @@
     <!-- Page-->
     <div class="page">
       <div class="page-loader">
-        <div class="brand-name"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/>
+        <div class="brand-name"><img alt="" width="176" height="45"/>
         </div>
         <div class="page-loader-body">
           <div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div>
@@ -37,72 +37,28 @@
               <div class="rd-navbar-panel">
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand"><a class="brand-name" href="/<messages[i].petname>"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/></a></div>
+                <div class="rd-navbar-brand"><a class="brand-name" href="/<messages[i].petname>"><img alt="" width="176" height="45"/></a></div>
               </div>
               <!-- RD Navbar Nav-->
               <div class="rd-navbar-nav-wrap">
                 <ul class="rd-navbar-nav">
                   <li><a href="/">Home</a>
+                  </li>
+                  <li><a href="about-us.html">About Us</a>
+                  </li>
+                  <li><a href="adopt-a-pet.html">Adopt a Pet</a>
+                    <ul class="rd-navbar-dropdown tabs-nav">
+                      <li><a href="/feed">Adopt cats</a>
+                      </li>
+                      <li><a href="/dogfeed">Adopt dogs</a>
+                      </li>
+                      <li><a href="/smallanifeed">Adopt small pets</a>
+                      </li>
 
-
-                  <li><a href="#">Pages</a>
-                    <ul class="rd-navbar-megamenu">
-                      <li>
-                        <p class="rd-megamenu-header">Donate</p>
-                        <ul class="rd-megamenu-list">
-                          <li><a href="make-a-gift-online.html">Make a Gift Online</a></li>
-                          <li><a href="sustaining-gifts.html">Sustaining Gifts</a></li>
-                          <li><a href="estate-and-planned-giving.html">Estate and Planned Giving</a></li>
-                          <li><a href="memorials-and-honorariums.html">Memorials and Honorariums</a></li>
-                          <li><a href="more-ways-to-give.html">More Ways to Give</a></li>
-                          <li><a href="host-your-own-fundraiser.html">Host Your Own Fundraiser</a></li>
-                          <li><a href="donate-to-our-wish-list.html">Donate to Our Wish List</a></li>
-                          <li><a href="donate-a-vehicle.html">Donate a Vehicle</a></li>
-                          <li><a href="community-service-projects.html">Community Service Projects</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <p class="rd-megamenu-header">Pages</p>
-                        <ul class="rd-megamenu-list">
-                          <li><a href="404-page.html">404 Page</a></li>
-                          <li><a href="503-page.html">503 Page</a></li>
-                          <li><a href="maintenance.html">Maintenance</a></li>
-                          <li><a href="coming-soon.html">Coming soon</a></li>
-                          <li><a href="login-page.html">Login page</a></li>
-                          <li><a href="register-page.html">Register page</a></li>
-                          <li><a href="search-results.html">Search results</a></li>
-                          <li><a href="privacy-policy.html">Privacy policy</a></li>
-                          <li><a href="site-map.html">Site map</a></li>
-                          <li><a href="contacts.html">Contacts</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <p class="rd-megamenu-header">Elements</p>
-                        <ul class="rd-megamenu-list">
-                          <li><a href="buttons.html">Buttons</a></li>
-                          <li><a href="grid.html">Grid</a></li>
-                          <li><a href="forms.html">Forms</a></li>
-                          <li><a href="progress-bars.html">Progress bars</a></li>
-                          <li><a href="tabs-&amp;-accordions.html">Tabs &amp; accordions</a></li>
-                          <li><a href="tables.html">Tables</a></li>
-                          <li><a href="typography.html">Typography</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <p class="rd-megamenu-header">Layouts</p>
-                        <ul class="rd-megamenu-list">
-                          <li><a href="header-default.html">Header default</a></li>
-                          <li><a href="header-transparent.html">Header transparent</a></li>
-                          <li><a href="header-fullwidth.html">Header fullwidth</a></li>
-                          <li><a href="header-modern.html">Header modern</a></li>
-                          <li><a href="footer-default.html">Footer default</a></li>
-                          <li><a href="footer-corporate.html">Footer corporate</a></li>
-                          <li><a href="footer-minimal.html">Footer minimal</a></li>
-                        </ul>
-                      </li>
                     </ul>
                   </li>
                   <li><a href="logout">Log Out</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -163,7 +119,7 @@
                             <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].age %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].weight %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span><%= petlistings[i].city %></span></li>
-                            <button class="overlayOn" type="button" name="button">Bio</button>
+                            <li><span><button class="overlayOn" type="button" name="button">Bio</button></span></li>
                           </ul>
                         </div>
                       </div>
@@ -195,6 +151,7 @@
                       </div>
                     </section>
                   <% } %>
+
                   <!-- <div class="cell-md-6"> -->
                     <!-- Thumbnail boxed vertical-->
                     <!-- <div class="thumbnail-boxed thumbnail-boxed-vertical thumbnail-boxed-blue-marguerite">
@@ -258,166 +215,8 @@
                 </div> -->
 
               </div>
-              <!-- Tab 2-->
-              <div class="tab-pane fade" id="adopt-dogs">
-                <h4>Our Featured Dogs</h4>
-                <p>At Animal Shelter, we have a variety of dogs ready to be adopted today! They will be glad to become your best friends.Check out this list of featured dogs looking for good homes. You can also perform a search by zip code to meet available dogs in your area! If you live in New York City, don't forget to check out the dogs available at Animal Shelter.</p>
-                <div class="range spacing-30">
-                  <div class="cell-xs-12">
-                    <!-- Thumbnail boxed horizontal-->
-                    <div class="thumbnail-boxed thumbnail-boxed-horizontal">
-                      <div class="thumbnail-boxed-left"><img class="thumbnail-boxed-image" src="images/adopt-dogs-1-370x254.jpg" alt="" width="370" height="254"/>
-                      </div>
-                      <div class="thumbnail-boxed-body">
-                        <p class="thumbnail-boxed-title"><a href="single-page-pets.html">Beasley</a></p>
-                        <div class="thumbnail-boxed-text">
-                          <p>He was in a shelter that lacked the resources to continue to care for him, so Beasley came to our shelter to find a new home. He is playful and cheerful dog, who enjoys playing with toys and often...</p>
-                        </div>
-                        <div class="thumbnail-boxed-footer">
-                          <ul class="thumbnail-boxed-meta">
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span>2.5 years old</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span>42 pounds</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span>New York</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cell-xs-12">
-                    <!-- Thumbnail boxed horizontal-->
-                    <div class="thumbnail-boxed thumbnail-boxed-horizontal thumbnail-boxed-blue-marguerite">
-                      <div class="thumbnail-boxed-left"><img class="thumbnail-boxed-image" src="images/adopt-dogs-2-370x254.jpg" alt="" width="370" height="254"/>
-                      </div>
-                      <div class="thumbnail-boxed-body">
-                        <p class="thumbnail-boxed-title"><a href="single-page-pets.html">Jade</a></p>
-                        <div class="thumbnail-boxed-text">
-                          <p>Jade needed help with her behavior, so she came to Animal Shelter to learn good manners and find a new home. She is ready to find a new home and a loving family. is very positive and emotional, so...</p>
-                        </div>
-                        <div class="thumbnail-boxed-footer">
-                          <ul class="thumbnail-boxed-meta">
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span>12 years old</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span>47 pounds</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span>New York</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cell-xs-12">
-                    <!-- Thumbnail boxed horizontal-->
-                    <div class="thumbnail-boxed thumbnail-boxed-horizontal thumbnail-boxed-tan-hide">
-                      <div class="thumbnail-boxed-left"><img class="thumbnail-boxed-image" src="images/adopt-dogs-3-370x254.jpg" alt="" width="370" height="254"/>
-                      </div>
-                      <div class="thumbnail-boxed-body">
-                        <p class="thumbnail-boxed-title"><a href="single-page-pets.html">Blake</a></p>
-                        <div class="thumbnail-boxed-text">
-                          <p>Blake was delivered to our shelter after a brutal attack by other dogs. Our vets helped him to survive the results of this incident, and now he is ready to be adopted! He is doing very well with other dogs...</p>
-                        </div>
-                        <div class="thumbnail-boxed-footer">
-                          <ul class="thumbnail-boxed-meta">
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span>10 years old</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span>92 pounds</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span>New York</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cell-xs-12">
-                    <!-- Thumbnail boxed horizontal-->
-                    <div class="thumbnail-boxed thumbnail-boxed-horizontal">
-                      <div class="thumbnail-boxed-left"><img class="thumbnail-boxed-image" src="images/adopt-dogs-4-370x254.jpg" alt="" width="370" height="254"/>
-                      </div>
-                      <div class="thumbnail-boxed-body">
-                        <p class="thumbnail-boxed-title"><a href="single-page-pets.html">Niles</a></p>
-                        <div class="thumbnail-boxed-text">
-                          <p>Niles is a handsome 4-year old Belgian/German shepherd mix arriving in NYC on November 19 from a high kill shelter in Alabama. This sweet boy is just waiting to find a forever home where he can cuddle...</p>
-                        </div>
-                        <div class="thumbnail-boxed-footer">
-                          <ul class="thumbnail-boxed-meta">
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span>4.4 years old</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span>64 pounds</span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span>New York</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-              </div>
-              <!-- Tab 3-->
-              <div class="tab-pane fade" id="adopt-small-pets">
-                <div class="range spacing-70">
-                  <div class="cell-md-6"><img class="img-responsive" src="images/adopt-small-pets-1-370x240.jpg" alt="" width="370" height="240"/>
-                  </div>
-                  <div class="cell-md-6 text-gray-darker">
-                    <p>We have a selection of small animals available for adoption. Our animal shelter offers you a possibility to adopt almost any small pet that come in different shapes and sizes and can be perfect friends or companions for your family. Our range of small pets includes:</p>
-                    <ul class="marked-list">
-                      <li>Hamsters</li>
-                      <li>Rabbits</li>
-                      <li>Parrots</li>
-                    </ul>
-                  </div>
 
-                  <div class="cell-xs-12">
-                    <div class="range spacing-negative-1">
-                      <div class="cell-md-6"><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-2-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Brittany</p>
-                            <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-3-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Harlow</p>
-                            <p class="thumbnail-minimal-subtitle">Hamster</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-4-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">August</p>
-                            <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-5-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Christina</p>
-                            <p class="thumbnail-minimal-subtitle">Rabbit</p>
-                          </div></a>
-                      </div>
-                      <div class="cell-md-6"><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-6-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Martha</p>
-                            <p class="thumbnail-minimal-subtitle">Hamster</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-7-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Mink</p>
-                            <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-8-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Penelope</p>
-                            <p class="thumbnail-minimal-subtitle">Rabbit</p>
-                          </div></a><a class="thumbnail-minimal" href="single-page-pets.html">
-                          <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal" src="images/adopt-small-pets-9-96x107.jpg" alt="" width="96" height="107"/>
-                          </div>
-                          <div class="thumbnail-minimal-body">
-                            <p class="thumbnail-minimal-title">Macy</p>
-                            <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
-                          </div></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

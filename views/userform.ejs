@@ -26,7 +26,7 @@
         <!-- Page-->
         <div class="page">
           <div class="page-loader">
-            <div class="brand-name"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/>
+            <div class="brand-name"><img  alt="" width="176" height="45"/>
             </div>
             <div class="page-loader-body">
               <div class="cssload-jumping"><span></span><span></span><span></span><span></span><span></span></div>
@@ -42,85 +42,28 @@
                   <div class="rd-navbar-panel">
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img src="images/logo-default-176x45.png" alt="" width="176" height="45"/></a></div>
+                    <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img  alt="" width="176" height="45"/></a></div>
                   </div>
                   <!-- RD Navbar Nav-->
                   <div class="rd-navbar-nav-wrap">
                     <ul class="rd-navbar-nav">
-                      <li><a href="index.html">Home</a>
+                      <li><a href="/indexlogin">Home</a>
                       </li>
-                      <li><a href="about-us.html">About Us</a>
+                      <li><a href="/favorites">Favorites</a>
                       </li>
                       <li><a href="adopt-a-pet.html">Adopt a Pet</a>
                         <ul class="rd-navbar-dropdown tabs-nav">
-                          <li><a href="adopt-a-pet.html#adopt-cats">Adopt cats</a>
+                          <li><a href="/loggedinfeed">Adopt cats</a>
                           </li>
-                          <li><a href="adopt-a-pet.html#adopt-dogs">Adopt dogs</a>
+                          <li><a href="/loggedindogfeed">Adopt dogs</a>
                           </li>
-                          <li><a href="adopt-a-pet.html#adopt-small-pets">Adopt small pets</a>
+                          <li><a href="/smallanifeed">Adopt small pets</a>
                           </li>
-                          <li><a href="single-page-pets.html">Single Page Pets</a>
-                          </li>
+
                         </ul>
                       </li>
-
-                      <!-- <li class="active"><a href="#">Pages</a>
-                        <ul class="rd-navbar-megamenu">
-                          <li>
-                            <p class="rd-megamenu-header">Donate</p>
-                            <ul class="rd-megamenu-list">
-                              <li><a href="make-a-gift-online.html">Make a Gift Online</a></li>
-                              <li><a href="sustaining-gifts.html">Sustaining Gifts</a></li>
-                              <li><a href="estate-and-planned-giving.html">Estate and Planned Giving</a></li>
-                              <li><a href="memorials-and-honorariums.html">Memorials and Honorariums</a></li>
-                              <li><a href="more-ways-to-give.html">More Ways to Give</a></li>
-                              <li><a href="host-your-own-fundraiser.html">Host Your Own Fundraiser</a></li>
-                              <li><a href="donate-to-our-wish-list.html">Donate to Our Wish List</a></li>
-                              <li><a href="donate-a-vehicle.html">Donate a Vehicle</a></li>
-                              <li><a href="community-service-projects.html">Community Service Projects</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p class="rd-megamenu-header">Pages</p>
-                            <ul class="rd-megamenu-list">
-                              <li><a href="404-page.html">404 Page</a></li>
-                              <li><a href="503-page.html">503 Page</a></li>
-                              <li><a href="maintenance.html">Maintenance</a></li>
-                              <li><a href="coming-soon.html">Coming soon</a></li>
-                              <li><a href="login-page.html">Login page</a></li>
-                              <li><a href="register-page.html">Register page</a></li>
-                              <li><a href="search-results.html">Search results</a></li>
-                              <li><a href="privacy-policy.html">Privacy policy</a></li>
-                              <li><a href="site-map.html">Site map</a></li>
-                              <li><a href="contacts.html">Contacts</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p class="rd-megamenu-header">Elements</p>
-                            <ul class="rd-megamenu-list">
-                              <li><a href="buttons.html">Buttons</a></li>
-                              <li><a href="grid.html">Grid</a></li>
-                              <li><a href="forms.html">Forms</a></li>
-                              <li><a href="progress-bars.html">Progress bars</a></li>
-                              <li><a href="tabs-&amp;-accordions.html">Tabs &amp; accordions</a></li>
-                              <li><a href="tables.html">Tables</a></li>
-                              <li><a href="typography.html">Typography</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p class="rd-megamenu-header">Layouts</p>
-                            <ul class="rd-megamenu-list">
-                              <li><a href="header-default.html">Header default</a></li>
-                              <li><a href="header-transparent.html">Header transparent</a></li>
-                              <li><a href="header-fullwidth.html">Header fullwidth</a></li>
-                              <li><a href="header-modern.html">Header modern</a></li>
-                              <li><a href="footer-default.html">Footer default</a></li>
-                              <li><a href="footer-corporate.html">Footer corporate</a></li>
-                              <li><a href="footer-minimal.html">Footer minimal</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li> -->
+                      <li><a href="logout">Log Out</a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -142,12 +85,13 @@
         flex-direction: column;
         width: 50%;
         margin-top: 5rem;
+        margin-bottom: 5rem;
         margin-left: auto;
         margin-right: auto;
       }
-      textarea {
-        height: 20rem;
+      input {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
       }
     </style>
     <form action="/submitForm" method="post">
@@ -163,7 +107,7 @@
         <input type="text" name="roomates" value="" placeholder="Do you live with other people">
         <input type="text" name="behavior" value="" placeholder="How would you deal with behavioral issues">
         <input type="text" name="reference" value="" placeholder="Please provide a reference">
-        <input type="submit" value="submit">
+        <input type="submit" value="Submit">
     </form>
 
   </div>

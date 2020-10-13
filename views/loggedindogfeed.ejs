@@ -42,15 +42,15 @@
               <!-- RD Navbar Nav-->
               <div class="rd-navbar-nav-wrap">
                 <ul class="rd-navbar-nav">
-                  <li><a href="/">Home</a>
+                  <li><a href="/indexlogin">Home</a>
                   </li>
-                  <li><a href="about-us.html">About Us</a>
+                  <li><a href="/favorites">Favorites</a>
                   </li>
                   <li><a href="adopt-a-pet.html">Adopt a Pet</a>
                     <ul class="rd-navbar-dropdown tabs-nav">
-                      <li><a href="/feed">Adopt cats</a>
+                      <li><a href="/loggedinfeed">Adopt cats</a>
                       </li>
-                      <li><a href="/dogfeed">Adopt dogs</a>
+                      <li><a href="/loggedindogfeed">Adopt dogs</a>
                       </li>
                       <li><a href="/smallanifeed">Adopt small pets</a>
                       </li>
@@ -69,7 +69,8 @@
       <section class="section-md bg-white text-center">
         <div class="shell">
 
-              <div id="adopt-dogs">
+          <div class="tab-pane fade in active" id="adopt-dogs"><img class="img-responsive" src="images/news-4-570x333.jpg" alt="" width="770" height="485"/>
+
                 <h4>Our Featured Dogs</h4>
                 <p>At Animal Shelter, we have a variety of dogs ready to be adopted today! They will be glad to become your best friends.Check out this list of featured dogs looking for good homes. You can also perform a search by zip code to meet available dogs in your area! If you live in New York City, don't forget to check out the dogs available at Animal Shelter.</p>
                 <div class="range spacing-30">
@@ -86,11 +87,18 @@
                         </div>
                         <div class="thumbnail-boxed-footer">
                           <ul class="thumbnail-boxed-meta">
+
                             <li style="display: none;"><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].petName %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].age %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].weight %></span></li>
-                            <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span><%= petlistings[i].city %></span></li>
-                            <button class="overlayOn" type="button" name="button">Bio</button>
+                            <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].city %></span></li>
+                            <li style="display: none;" ><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].imgPath%></span></li>
+                            <li><span><button class="overlayOn" type="button" name="button">Bio</button></span></li>
+                            <% if(petlistings[i].heart === true){ %>
+                              <li><span class="red"><i class="fas fa-heart"></i></span></li>
+                                <% } else { %>
+                              <li><span><i class="fas fa-heart"></i></span></li>
+                              <% } %>
                           </ul>
                         </div>
                       </div>
@@ -104,15 +112,15 @@
                         <div class="cell-sm-9 cell-md-12">
                           <!-- Box profile-->
                           <article class="box-profile">
-                            <div class="box-profile-left"><img class="box-profile-image" src="images/lavender-570x389.jpg" alt="" width="570" height="389"/>
+                            <div class="box-profile-left"><img class="box-profile-image" src="<%= petlistings[i].imgPath%>" alt="" width="570" height="389"/>
                             </div>
                             <div class="box-profile-body">
                               <p class="box-profile-name"><%= petlistings[i].petName %></p>
-                              <p class="box-profile-description">Spayed Female</p>
+                              <p class="box-profile-description"><%= petlistings[i].caption %></p>
                               <div class="box-profile-text">
-                                <p>This beautiful cat had health issues her family couldn’t take care of, so she came to us, and we quickly found her a place in our shelter. She is a very lovable 4 yr old female domestic shorthair cat and she weighs 10 pounds. Lavender is all about affection and looking for that special person to spend the rest of her life with. She is wonderful indoors and she enjoys dry cat food.</p>
+                                <p><%= petlistings[i].description %></p>
                                 <p class="box-profile-title">Information for Adopters</p>
-                                <p>All cats and kittens have been vet-checked, spayed/neutered, and are up-to-date on vaccinations. Adoption fee includes carrier, scratching pad, starter pack of food and litter, and toy. We prefer kittens be adopted in pairs. We offer free advice anytime about your adopted cat. If, for any reason, it doesn't work out, we will take the cat back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Animal Shelter.</p>
+                                <p>All dogs and puppies have been vet-checked, spayed/neutered, and are up-to-date on vaccinations. Adoption fee includes carrier, toys, starter pack of food and pads, and toy. We offer free advice anytime about your adopted dog. If, for any reason, it doesn't work out, we will take the dog back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Animal Shelter.</p>
                               </div>
                               <button class="overlayOff" type="button" name="button">Close</button>
                             </div>

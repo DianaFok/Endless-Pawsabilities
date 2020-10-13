@@ -6,15 +6,17 @@ const saveChanges = document.getElementsByClassName("saveChanges");
 const overlayOn = document.getElementsByClassName("overlayOn")
 const overlayOff = document.getElementsByClassName("overlayOff")
 
+//user can save favorites, targeting textnodes in the listing, sending to backend
+//then gets saved to DB aka making clone of petlistings
 Array.from(heart).forEach(function(element) {
       element.addEventListener('click', function(){
-        console.log(this.parentNode.parentNode.parentNode.childNodes[1].innerText)
-        const imgPath = this.parentNode.parentNode.parentNode.childNodes[1].innerText
-        const petName = this.parentNode.parentNode.parentNode.childNodes[3].innerText
+        console.log(this.parentNode.parentNode.parentNode.childNodes[11].innerText)
+        const imgPath = this.parentNode.parentNode.parentNode.childNodes[9].innerText
+        const petName = this.parentNode.parentNode.parentNode.childNodes[1].innerText
         const weight = this.parentNode.parentNode.parentNode.childNodes[5].innerText
-        const age = this.parentNode.parentNode.parentNode.childNodes[7].innerText
-        const city = this.parentNode.parentNode.parentNode.childNodes[9].innerText
-        const heart = this.parentNode.parentNode.parentNode.childNodes[11].innerText
+        const age = this.parentNode.parentNode.parentNode.childNodes[3].innerText
+        const city = this.parentNode.parentNode.parentNode.childNodes[7].innerText
+        // const heart = this.parentNode.parentNode.parentNode.childNodes[11].innerText
         alert(`${petName} has been added to favorites!`)
         fetch('favorites', {
           method: 'put',
@@ -24,8 +26,7 @@ Array.from(heart).forEach(function(element) {
             'petName': petName,
             'weight': weight,
             'age': age,
-            'city': city,
-            'heart': heart
+            'city': city
           })
         })
         .then(response => {
@@ -38,6 +39,10 @@ Array.from(heart).forEach(function(element) {
       });
 });
 
+//targeting these nodes (certain info of app) so the DB knows which application to update info
+//username = applicants Name
+//email = applicants email
+//sends info as string
 Array.from(approved).forEach(function(element) {
       element.addEventListener('click', function(){
         const userName = this.parentNode.parentNode.childNodes[1].innerText
@@ -113,37 +118,37 @@ Array.from(pending).forEach(function(element) {
     });
 });
 
-Array.from(saveChanges).forEach(function(element) {
-      element.addEventListener('click', function(){
-        // const imgPath = this.parentNode.parentNode.childNodes[1].childNodes[1].src.split("/")[5];
-        const petName = this.parentNode.childNodes[1].innerText
-        const type = this.parentNode.childNodes[3].innerText
-        const caption = this.parentNode.childNodes[5].innerText
-        const description = this.parentNode.childNodes[7].innerText
-        const age = this.parentNode.childNodes[9].innerText
-        const weight = this.parentNode.childNodes[11].innerText
-        const city = this.parentNode.childNodes[13].innerText
-        fetch('saveChanges', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'petName': petName,
-            'type': type,
-            'caption': caption,
-            'description': description,
-            'age': age,
-            'weight': weight,
-            'city': city
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          window.location.reload(true)
-        })
-      });
-});
+// Array.from(saveChanges).forEach(function(element) {
+//       element.addEventListener('click', function(){
+//         // const imgPath = this.parentNode.parentNode.childNodes[1].childNodes[1].src.split("/")[5];
+//         const petName = this.parentNode.childNodes[1].innerText
+//         const type = this.parentNode.childNodes[3].innerText
+//         const caption = this.parentNode.childNodes[5].innerText
+//         const description = this.parentNode.childNodes[7].innerText
+//         const age = this.parentNode.childNodes[9].innerText
+//         const weight = this.parentNode.childNodes[11].innerText
+//         const city = this.parentNode.childNodes[13].innerText
+//         fetch('saveChanges', {
+//           method: 'put',
+//           headers: {'Content-Type': 'application/json'},
+//           body: JSON.stringify({
+//             'petName': petName,
+//             'type': type,
+//             'caption': caption,
+//             'description': description,
+//             'age': age,
+//             'weight': weight,
+//             'city': city
+//           })
+//         })
+//         .then(response => {
+//           if (response.ok) return response.json()
+//         })
+//         .then(data => {
+//           window.location.reload(true)
+//         })
+//       });
+// });
 
 Array.from(overlayOn).forEach(function(element) {
       element.addEventListener('click', function(){
