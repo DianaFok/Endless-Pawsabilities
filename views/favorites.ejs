@@ -17,6 +17,11 @@
     <script src="js/html5shiv.min.js"></script>
 		<![endif]-->
   </head>
+  <style>
+    #size {
+      font-size: 2rem;
+    }
+  </style>
   <body>
     <!-- Page-->
     <div class="page">
@@ -45,7 +50,7 @@
                   <li><a href="/indexlogin">Home</a>
                   </li>
 
-                  <li><a href="adopt-a-pet.html">Adopt a Pet</a>
+                  <li class="active" ><a href="">Adopt a Pet</a>
                     <ul class="rd-navbar-dropdown tabs-nav">
                       <li><a href="/loggedinfeed">Adopt cats</a>
                       </li>
@@ -109,10 +114,12 @@
                         <div class="thumbnail-boxed-footer">
                           <ul class="thumbnail-boxed-meta">
                             <li style="display: none;"><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].petName %></span></li>
+                            <li style="display: none;"><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].email %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].age %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span><%= petlistings[i].weight %></span></li>
                             <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span><%= petlistings[i].city %></span></li>
                             <li><span><button class="overlayOn" type="button" name="button">Bio</button></span></li>
+                            <li id="size"><i class="fas fa-trash"></i></li>
                           </ul>
                         </div>
                       </div>
@@ -134,7 +141,7 @@
                               <div class="box-profile-text">
                                 <p><%= petlistings[i].description %></p>
                                 <p class="box-profile-title">Information for Adopters</p>
-                                <p>All dogs and puppies have been vet-checked, spayed/neutered, and are up-to-date on vaccinations. Adoption fee includes carrier, toys, starter pack of food and pads, and toy. We offer free advice anytime about your adopted dog. If, for any reason, it doesn't work out, we will take the dog back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Animal Shelter.</p>
+                                <p>All dogs and puppies have been vet-checked, spayed/neutered, and are up-to-date on vaccinations. Adoption fee includes carrier, toys, starter pack of food and pads, and toy. We offer free advice anytime about your adopted dog. If, for any reason, it doesn't work out, we will take the dog back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Endless Pawsabilities.</p>
                               </div>
                               <button class="overlayOff" type="button" name="button">Close</button>
                             </div>
@@ -210,7 +217,7 @@
               <!-- Tab 2-->
               <div class="tab-pane fade" id="adopt-dogs">
                 <h4>Our Featured Dogs</h4>
-                <p>At Animal Shelter, we have a variety of dogs ready to be adopted today! They will be glad to become your best friends.Check out this list of featured dogs looking for good homes. You can also perform a search by zip code to meet available dogs in your area! If you live in New York City, don't forget to check out the dogs available at Animal Shelter.</p>
+                <p>At Endless Pawsabilities, we have a variety of dogs ready to be adopted today! They will be glad to become your best friends.Check out this list of featured dogs looking for good homes. You can also perform a search by zip code to meet available dogs in your area! If you live in New York City, don't forget to check out the dogs available at Endless Pawsabilities.</p>
                 <div class="range spacing-30">
                   <div class="cell-xs-12">
                     <!-- Thumbnail boxed horizontal-->
@@ -240,7 +247,7 @@
                       <div class="thumbnail-boxed-body">
                         <p class="thumbnail-boxed-title"><a href="single-page-pets.html">Jade</a></p>
                         <div class="thumbnail-boxed-text">
-                          <p>Jade needed help with her behavior, so she came to Animal Shelter to learn good manners and find a new home. She is ready to find a new home and a loving family. is very positive and emotional, so...</p>
+                          <p>Jade needed help with her behavior, so she came to Endless Pawsabilities to learn good manners and find a new home. She is ready to find a new home and a loving family. is very positive and emotional, so...</p>
                         </div>
                         <div class="thumbnail-boxed-footer">
                           <ul class="thumbnail-boxed-meta">

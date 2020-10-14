@@ -37,25 +37,23 @@
               <div class="rd-navbar-panel">
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand"><a class="brand-name" href="/indexlogin"><img src="images/mylogo.jpg" width="176" height="50"></a></div>
-
+                <div class="rd-navbar-brand"><a class="brand-name" href="/<messages[i].petname>"><img  alt="" width="176" height="45"/></a></div>
               </div>
               <!-- RD Navbar Nav-->
               <div class="rd-navbar-nav-wrap">
                 <ul class="rd-navbar-nav">
-                  <li><a href="/indexlogin">Home</a>
+                  <li><a href="/">Home</a>
                   </li>
-                  <li><a href="/favorites">Favorites</a>
+                  <li><a href="/aboutus">About Us</a>
                   </li>
-                  <li class="active"><a href="">Adopt a Pet</a>
+                  <li class="active" ><a href="">Adopt a Pet</a>
                     <ul class="rd-navbar-dropdown tabs-nav">
-                      <li><a href="/loggedinfeed">Adopt cats</a>
+                      <li><a href="/feed">Adopt cats</a>
                       </li>
-                      <li><a href="/loggedindogfeed">Adopt dogs</a>
+                      <li><a href="/dogfeed">Adopt dogs</a>
                       </li>
-                      <li><a href="/smallanifeed">Adopt small pets</a>
+                      <li><a href="adopt-a-pet.html#adopt-small-pets">Adopt small pets</a>
                       </li>
-                      <li><a href="/userform">Submit an application</a></li>
 
                     </ul>
                   </li>
@@ -67,43 +65,34 @@
           </nav>
         </div>
       </header>
-      <!-- Breadcrumbs & Page title-->
-
-
       <!-- Adopt pets-->
       <section class="section-md bg-white text-center">
         <div class="shell">
-          <div data-content-to="#adopt-cats">
-            <h3>One Of These Cats may become Yours</h3>
-            <p class="big text-width-medium">From spunky to docile and cuddly to independent, Endless Pawsabilities has dozens of kittens and cats waiting for their forever homes. Take a look and see which one is right for you!</p>
-          </div>
-          <div data-content-to="#adopt-dogs">
-            <h3>Adopt a dog in New York City</h3>
-            <p class="big text-width-smaller">Looking for a true friend for you, your children or your family? Consider adopting a dog from Endless Pawsabilities today!</p>
-          </div>
-          <div data-content-to="#adopt-small-pets">
-            <h3>Small Animals for Adoption</h3>
-            <p class="big text-width-small">Small animals can be great companions if you cannot afford a bigger pet or live in a small house, but are looking for someone cute to adopt.</p>
-          </div>
-          <!-- Bootstrap tabs-->
-          <div class="tabs tabs-custom tabs-vertical tabs-corporate tabs-wide" id="tabs-1" data-url-tabs="true">
-            <!-- Nav tabs-->
-            <!-- <ul class="nav nav-tabs">
-              <li class="active"><a href="#adopt-cats" data-toggle="tab">Adopt Cats</a></li>
-              <li><a href="#adopt-dogs" data-toggle="tab">Adopt Dogs</a></li>
-              <li><a href="#adopt-small-pets" data-toggle="tab">Adopt Small Pets</a></li>
-            </ul> -->
-            <!-- Tab panes-->
-            <div class="tab-content">
-              <!-- Tab 1-->
-              <div class="tab-pane fade in active" id="adopt-cats"><img class="img-responsive" src="images/adopt-cats-1-770x485.jpg" alt="" width="770" height="485"/>
-                <h4>Bring a New Cat Home</h4>
-                <p>Choosing to adopt a cat or kitten is an exciting time. Even though there are many things to consider before adopting a pet,  a cat from Endless Pawsabilities can easily become a new member of your family and what’s more important find a loving family and home. Here are the cats and kittens we are glad to offer you for adoption.</p>
+
+              <div id="adopt-dogs">
+                <h4>Our Featured Small Animals</h4>
                 <div class="range spacing-30">
+
+
+
+
+
+              <div id="adopt-small-pets">
+                <div class="range spacing-70">
+                  <div class="cell-md-6"><img class="img-responsive" src="images/adopt-small-pets-1-370x240.jpg" alt="" width="370" height="240"/>
+                  </div>
+                  <div class="cell-md-6 text-gray-darker">
+                    <p>We have a selection of small animals available for adoption. Our animal shelter offers you a possibility to adopt almost any small pet that come in different shapes and sizes and can be perfect friends or companions for your family. Our range of small pets includes:</p>
+                    <ul class="marked-list">
+                      <li>Hamsters</li>
+                      <li>Rabbits</li>
+                      <li>Parrots</li>
+                    </ul>
+                  </div>
                   <!-- _______________________________ -->
 
 
-                  <% for(var i=0; i<petlistings.length; i++) {%>
+                  <% for(var i=0; i < petlistings.length; i++) {%>
 
                     <div class="cell-md-6">
                     <!-- Thumbnail boxed vertical-->
@@ -128,11 +117,7 @@
                             <li style="display: none;" ><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].caption%></span></li>
                             <li style="display: none;" ><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span><span><%= petlistings[i].description%></span></li>
                             <li><span><button class="overlayOn" type="button" name="button">Bio</button></span></li>
-                            <% if(petlistings[i].heart === true){ %>
-                              <li><span class="red"><i class="fas fa-heart"></i></span></li>
-                                <% } else { %>
-                              <li><span><i class="fas fa-heart"></i></span></li>
-                              <% } %>
+
                           </ul>
                         </div>
                       </div>
@@ -154,7 +139,7 @@
                                 <div class="box-profile-text">
                                   <p><%= petlistings[i].description %></p>
                                   <p class="box-profile-title">Information for Adopters</p>
-                                  <p>All cats and kittens have been vet-checked, spayed/neutered, and are up-to-date on vaccinations. Adoption fee includes carrier, scratching pad, starter pack of food and litter, and toy. We prefer kittens be adopted in pairs. We offer free advice anytime about your adopted cat. If, for any reason, it doesn't work out, we will take the cat back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Endless Pawsabilities.</p>
+                                  <p>All small animals have been vet-checked and are up-to-date on vaccinations. Adoption fee includes a two-weeks worth of necessary items. We offer free advice anytime about your adopted cat. If, for any reason, it doesn't work out, we will take the small animal back, anytime in the future. Potential adopters must be interviewed in person, at the shelter, and live within 150 miles of Endless Pawsabilities.</p>
                                 </div>
                                 <button class="overlayOff" type="button" name="button">Close</button>
                               </div>

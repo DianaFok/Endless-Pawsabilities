@@ -1,4 +1,5 @@
 var heart = document.getElementsByClassName("fas fa-heart");
+var trash = document.getElementsByClassName("fas fa-trash");
 var approved = document.getElementsByClassName("fas fa-check");
 var denied = document.getElementsByClassName("fas fa-times");
 var pending = document.getElementsByClassName("fas fa-clock");
@@ -10,12 +11,14 @@ const overlayOff = document.getElementsByClassName("overlayOff")
 //then gets saved to DB aka making clone of petlistings
 Array.from(heart).forEach(function(element) {
       element.addEventListener('click', function(){
-        console.log(this.parentNode.parentNode.parentNode.childNodes[11].innerText)
+        // console.log(this.parentNode.parentNode.parentNode.childNodes[11].innerText)
         const imgPath = this.parentNode.parentNode.parentNode.childNodes[9].innerText
         const petName = this.parentNode.parentNode.parentNode.childNodes[1].innerText
         const weight = this.parentNode.parentNode.parentNode.childNodes[5].innerText
         const age = this.parentNode.parentNode.parentNode.childNodes[3].innerText
         const city = this.parentNode.parentNode.parentNode.childNodes[7].innerText
+        const caption = this.parentNode.parentNode.parentNode.childNodes[11].innerText
+        const description = this.parentNode.parentNode.parentNode.childNodes[13].innerText
         // const heart = this.parentNode.parentNode.parentNode.childNodes[11].innerText
         alert(`${petName} has been added to favorites!`)
         fetch('favorites', {
@@ -26,7 +29,9 @@ Array.from(heart).forEach(function(element) {
             'petName': petName,
             'weight': weight,
             'age': age,
-            'city': city
+            'city': city,
+            'caption': caption,
+            'description': description
           })
         })
         .then(response => {
@@ -167,29 +172,22 @@ Array.from(overlayOff).forEach(function(element) {
     });
 });
 
-// Array.from(trash).forEach(function(element) {
-//       element.addEventListener('click', function(){
-//         const petName = this.parentNode.parentNode.childNodes[1].innerText
-//         // console.log('images/uploads/'imgPath.split("/")[5]);
-//
-//         fetch('/delete', {
-//           method: 'delete',
-//           headers: {
-//             'Content-Type': 'application/json'
-//           },
-//           body: JSON.stringify({
-//             'petName':petName
-//           })
-//         }).then(function (response) {
-//           window.location.reload()
-//         })
-//     });
-// });
+Array.from(trash).forEach(function(element) {
+      element.addEventListener('click', function(){
+        const petName = this.parentNode.parentNode.childNodes[1].innerText
+        const email = this.parentNode.parentNode.childNodes[3].innerText
 
-// function on() {
-//   document.getElementById("overlay").style.display = "block";
-// }
-//
-// function off() {
-//   document.getElementById("overlay").style.display = "none";
-// }
+        fetch('/delete', {
+          method: 'delete',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'petName':petName,
+            'email': email
+          })
+        }).then(function (response) {
+          window.location.reload()
+        })
+    });
+});

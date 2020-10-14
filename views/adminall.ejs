@@ -40,16 +40,15 @@
                 <div class="rd-navbar-panel">
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img  alt="" width="176" height="45"/></a></div>
+                  <div class="brand-name"><img src="images/mylogo.jpg" alt="" width="176" height="60"/>
                 </div>
                 <!-- RD Navbar Nav-->
                 <div class="rd-navbar-nav-wrap">
                   <ul class="rd-navbar-nav">
                     <li><a href="/adminfeed">Home</a>
                     </li>
-                    <li><a href="about-us.html">About Us</a>
-                    </li>
-                    <li><a href="adopt-a-pet.html">Adopt a Pet</a>
+                  
+                    <li><a href="">Adopt a Pet</a>
                       <ul class="rd-navbar-dropdown tabs-nav">
                         <li><a href="/feed">Adopt cats</a>
                         </li>
@@ -73,37 +72,35 @@
           <div class="page-title-text">Applications To Review</div>
         </div>
 
-    <style media="screen">
-      table {
-        margin-top: 3rem;
-        margin-left: 2rem;
-      }
-      td{
-        border: 1px solid black;
-        margin: 5px;
-        padding: 5px;
-      }
-    </style>
+        <style media="screen">
+          #size {
+            font-size: 3rem;
+          }
+        </style>
 
-    <table style="width:90%">
-    <% for(var i=0; i<applications.length; i++) {%>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Number</th>
-          <th>Address</th>
-          <th>Pet Name</th>
-          <th>Own Pets</th>
-          <th>Vet</th>
-          <th>Home</th>
-          <th>Roommates</th>
-          <th>Behavior</th>
-          <th>Lastname</th>
-          <th>Reference</th>
-          <th>Approve</th>
-          <th>Deny</th>
-          <th>Pending</th>
-        </tr>
+    <section class="section-md bg-white text-center">
+        <div class="table-custom-responsive">
+          <table class="table-custom table-custom-primary table-custom-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Address</th>
+                <th>Pet Name</th>
+                <th>Own Pets</th>
+                <th>Vet</th>
+                <th>Home</th>
+                <th>Roommates</th>
+                <th>Behavior</th>
+                <th>Lastname</th>
+                <th>Reference</th>
+                <th>Approve</th>
+                <th>Deny</th>
+                <th>Pending</th>
+              </tr>
+              </thead>
+        <% for(var i=0; i<applications.length; i++) {%>
         <tr>
           <td><%= applications[i].userName %></td>
           <td><%= applications[i].userEmail %></td>
@@ -117,12 +114,15 @@
           <td><%= applications[i].roommates %></td>
           <td><%= applications[i].behavior %></td>
           <td><%= applications[i].reference %></td>
-          <td style="color: lightgreen;" ><i class="fas fa-check"></i></td>
-          <td style="color: red;"><i class="fas fa-times"></i></td>
-          <td style="color: darkblue;"><i class="fas fa-clock"></i></td>
+          <td id="size" style="color: lightgreen;" ><i class="fas fa-check"></i></td>
+          <td id="size" style="color: red;"><i class="fas fa-times"></i></td>
+          <td id="size" style="color: darkblue;"><i class="fas fa-clock"></i></td>
         </tr>
       <% } %>
-    </table>
+    </tbody>
+  </table>
+  </div>
+  </section>
 
 
     <script type="text/javascript" src="main.js"></script>

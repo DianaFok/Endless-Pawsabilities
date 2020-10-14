@@ -26,8 +26,8 @@ app.get('/adminfeed', function(req, res) {
     res.render('adminfeed.ejs');
 });
 
-app.get('/smallAniFeed', function(req, res) {
-    res.render('smallAniFeed.ejs');
+app.get('/aboutus', function(req, res) {
+    res.render('aboutus.ejs');
 });
 
 // TEST/Application FORM SECTION =========================
@@ -131,7 +131,7 @@ app.get('/loggedindogfeed', isLoggedIn, function(req, res) {
 // Small Animal Feed with user logged in =========================
 app.get('/smallAniFeed', isLoggedIn, function(req, res) {
     let uId = ObjectId(req.session.passport.user)
-    db.collection('petlistings').find({"type": "Bird"}).toArray((err, result) => {
+    db.collection('petlistings').find({"type": "Small Animal"}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('smallAniFeed.ejs', {
         user : req.user,
@@ -170,6 +170,17 @@ app.get('/dogFeed', function(req, res) {
     db.collection('petlistings').find({"type": "Dog"}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('dogFeed.ejs', {
+        user : req.user,
+        petlistings: result
+      })
+    })
+});
+
+// Smallanimal PAGE =========================
+app.get('/bbfeed', function(req, res) {
+    db.collection('petlistings').find({"type": "Bird"}).toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('bbfeed.ejs', {
         user : req.user,
         petlistings: result
       })
@@ -218,6 +229,8 @@ app.put('/favorites', (req, res) => {
       weight: req.body.weight,
       city: req.body.city,
       age: req.body.age,
+      caption: req.body.caption,
+      description: req.body.description,
       heart: true
     }
   }, {
@@ -325,12 +338,12 @@ app.put('/pending', (req, res) => {
 //   })
 // })
 
-// app.delete('/delete', (req, res) => {
-//   db.collection('petlistings').findOneAndDelete({petName: req.body.petName}, (err, result) => {
-//     if (err) return res.send(500, err)
-//     res.send('Message deleted!')
-//   })
-// })
+app.delete('/delete', (req, res) => {
+  db.collection('petlistings').findOneAndDelete({petName: req.body.petName, email: req.body.email, }, (err, result) => {
+    if (err) return res.send(500, err)
+    res.send('Message deleted!')
+  })
+})
 
 // LOGOUT ==============================
 app.get('/logout', function(req, res) {
@@ -343,7 +356,7 @@ app.get('/logout', function(req, res) {
 // =============================================================================
 
     // locally --------------------------------
-        // LOGIN ===============================
+        // LOGIN =============================== diff endpoints
         // show the login form
         app.get('/login', function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
