@@ -22,6 +22,10 @@ app.get('/indexlogin', function(req, res) {
     res.render('indexlogin.ejs');
 });
 
+app.get('/adminfeed', function(req, res) {
+    res.render('adminfeed.ejs');
+});
+
 app.get('/smallAniFeed', function(req, res) {
     res.render('smallAniFeed.ejs');
 });
@@ -118,6 +122,18 @@ app.get('/loggedindogfeed', isLoggedIn, function(req, res) {
     db.collection('petlistings').find({"type": "Dog"}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('loggedindogfeed.ejs', {
+        user : req.user,
+        petlistings: result
+      })
+    })
+});
+
+// Small Animal Feed with user logged in =========================
+app.get('/smallAniFeed', isLoggedIn, function(req, res) {
+    let uId = ObjectId(req.session.passport.user)
+    db.collection('petlistings').find({"type": "Bird"}).toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('smallAniFeed.ejs', {
         user : req.user,
         petlistings: result
       })
@@ -228,7 +244,7 @@ app.put('/approve', (req, res) => {
       from: 'endlesspawsabilities1@outlook.com', // Sender address
       to: req.body.userEmail,         // List of recipients
       subject: 'Your pet adoption application has been approved, congrats!', // Subject line
-      text: 'Here is your image!', // Plain text body of the email i.e. steps for next adoption phase COVID???
+      text: 'Your application has been approved. The next step is a phone interview with one of our staff at Endless Pawsabilities, a representative will call you to set up a time.', // Plain text body of the email i.e. steps for next adoption phase COVID???
       // html: 'Embedded image: <img src=""/>',
       // attachments: [{
       //     filename: 'image.png',
@@ -333,16 +349,16 @@ app.get('/logout', function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
         });
 
-        app.get('/adminlogin', function(req, res) {
-            res.render('adminlogin.ejs', { message: req.flash('loginMessage') });
-        });
-
         // process the USER login form
         app.post('/login', passport.authenticate('local-login', {
             successRedirect : 'indexlogin', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
+
+        app.get('/adminlogin', function(req, res) {
+              res.render('adminlogin.ejs', { message: req.flash('loginMessage') });
+          });
 
         // process the ADMIN login form
         app.post('/adminlogin', passport.authenticate('local-login', {
@@ -359,10 +375,12 @@ app.get('/logout', function(req, res) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/test', // redirect to the secure profile section
+            successRedirect : '/indexlogin', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
+
+
 
 // =============================================================================
 // UNLINK ACCOUNTS =============================================================
