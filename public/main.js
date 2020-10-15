@@ -53,7 +53,7 @@ Array.from(approved).forEach(function(element) {
         const userName = this.parentNode.parentNode.childNodes[1].innerText
         const userEmail = this.parentNode.parentNode.childNodes[3].innerText
         const petName = this.parentNode.parentNode.childNodes[9].innerText
-
+        alert(`This application has been approved, response has been sent!`)
         fetch('approve', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
@@ -79,7 +79,7 @@ Array.from(denied).forEach(function(element) {
         console.log(this.parentNode.parentNode.childNodes[9].innerText)
         const userName = this.parentNode.parentNode.childNodes[1].innerText
         const petName = this.parentNode.parentNode.childNodes[9].innerText
-
+        alert(`This application has been denied, response has been sent.`)
         fetch('deny', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
@@ -104,7 +104,7 @@ Array.from(pending).forEach(function(element) {
         console.log(this.parentNode.parentNode.childNodes[9].innerText)
         const userName = this.parentNode.parentNode.childNodes[1].innerText
         const petName = this.parentNode.parentNode.childNodes[9].innerText
-
+        alert(`This application is pending, response has been sent.`)
         fetch('pending', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},

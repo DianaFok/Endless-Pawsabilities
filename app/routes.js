@@ -178,7 +178,7 @@ app.get('/dogFeed', function(req, res) {
 
 // Smallanimal PAGE =========================
 app.get('/bbfeed', function(req, res) {
-    db.collection('petlistings').find({"type": "Bird"}).toArray((err, result) => {
+    db.collection('petlistings').find({"type": "Small Animal"}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('bbfeed.ejs', {
         user : req.user,
@@ -193,7 +193,7 @@ app.post('/qpPost', upload.single('file-to-upload'), (req, res, next) => {
   db.collection('petlistings').save({posterId: uId, petName: req.body.petName, type: req.body.type, caption: req.body.caption, description: req.body.description, age: req.body.age, weight: req.body.weight, city: req.body.city, imgPath: 'image/uploads/' + req.file.filename}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
-    res.redirect('/feed')
+    res.redirect('/adminfeed')
   })
 });
 
@@ -202,7 +202,7 @@ app.post('/submitForm', (req, res, next) => {
   db.collection('applications').save({posterId: uId, userName: req.body.userName, userEmail: req.body.userEmail, userNumber: req.body.userNumber, userAddress: req.body.userAddress, petName: req.body.petName, ownPets: req.body.ownPets, schedule: req.body.schedule, vet: req.body.vet, home: req.body.home, roommates: req.body.roomates, behavior: req.body.behavior, reference: req.body.reference}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
-    res.redirect('/feed')
+    res.redirect('/indexlogin')
   })
 });
 
@@ -265,7 +265,7 @@ app.put('/approve', (req, res) => {
       //     cid: 'unique@nodemailer.com' //same cid value as in the html img src
       // }]
   };
-    transport.sendMail(message, function(err, info) { //using transport variable to use sendmail method -> send approved email to client
+    transport.sendMail(message, function(err, info) { //using transport variable to use sendmail method -> send approved email to client, message is parameter
       if (err) {
         console.log(err)
       } else {
@@ -375,7 +375,7 @@ app.get('/logout', function(req, res) {
 
         // process the ADMIN login form
         app.post('/adminlogin', passport.authenticate('local-login', {
-            successRedirect : 'test', // redirect to the secure profile section
+            successRedirect : 'adminfeed', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
