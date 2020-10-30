@@ -11,7 +11,6 @@ const overlayOff = document.getElementsByClassName("overlayOff")
 //then gets saved to DB aka making clone of petlistings
 Array.from(heart).forEach(function(element) {
       element.addEventListener('click', function(){
-        // console.log(this.parentNode.parentNode.parentNode.childNodes[11].innerText)
         const imgPath = this.parentNode.parentNode.parentNode.childNodes[9].innerText
         const petName = this.parentNode.parentNode.parentNode.childNodes[1].innerText
         const weight = this.parentNode.parentNode.parentNode.childNodes[5].innerText
@@ -19,7 +18,6 @@ Array.from(heart).forEach(function(element) {
         const city = this.parentNode.parentNode.parentNode.childNodes[7].innerText
         const caption = this.parentNode.parentNode.parentNode.childNodes[11].innerText
         const description = this.parentNode.parentNode.parentNode.childNodes[13].innerText
-        // const heart = this.parentNode.parentNode.parentNode.childNodes[11].innerText
         alert(`${petName} has been added to favorites!`)
         fetch('favorites', {
           method: 'put',
@@ -43,6 +41,10 @@ Array.from(heart).forEach(function(element) {
         })
       });
 });
+
+
+
+
 
 //targeting these nodes (certain info of app) so the DB knows which application to update info
 //username = applicants Name

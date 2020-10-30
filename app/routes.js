@@ -242,38 +242,28 @@ app.put('/favorites', (req, res) => {
   })
 })
 
-//nodemailer = service (NPM package) configuration
 app.put('/approve', (req, res) => {
   var transport = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-      user: "endlesspawsabilities1@outlook.com", //where we're sending emails from
+      user: "endlesspawsabilities1@outlook.com",
       pass: "09876543!"
     }
   });
 
-//OBJECT {} -> template/configuration for creating a message
   const message = {
-      from: 'endlesspawsabilities1@outlook.com', // Sender address
-      to: req.body.userEmail,         // List of recipients
-      subject: 'Your pet adoption application has been approved, congrats!', // Subject line
+      from: 'endlesspawsabilities1@outlook.com',
+      to: req.body.userEmail,
+      subject: 'Your pet adoption application has been approved, congrats!',
       text: 'Your application has been approved. The next step is a phone interview with one of our staff at Endless Pawsabilities, a representative will call you to set up a time.', // Plain text body of the email i.e. steps for next adoption phase COVID???
-      // html: 'Embedded image: <img src=""/>',
-      // attachments: [{
-      //     filename: 'image.png',
-      //     path: `./public/img/${fileName}`,
-      //     cid: 'unique@nodemailer.com' //same cid value as in the html img src
-      // }]
   };
-    transport.sendMail(message, function(err, info) { //using transport variable to use sendmail method -> send approved email to client, message is parameter
+    transport.sendMail(message, function(err, info) {
       if (err) {
         console.log(err)
       } else {
         console.log(info);
       }
   });
-
-//finds info -> then updates doc and inserts approval/deny/pending
   db.collection('applications').findOneAndUpdate({userName: req.body.userName, petName: req.body.petName}, {
     $set: {
       approval: true
