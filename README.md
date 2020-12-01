@@ -4,6 +4,9 @@
 
 A full-stack app that has the basics of a pet adoption site that also allows the admin to review submitted pet adoption applications. When an application has been approved, an email will be sent to the user.
 
+View project in browser: https://endless-pawsabilities.herokuapp.com/
+
+
 ![tracker](public/img/readme.png)
 
 ## How It's Made:
