@@ -230,8 +230,8 @@ app.put('/favorites', (req, res) => {
       city: req.body.city,
       age: req.body.age,
       caption: req.body.caption,
-      description: req.body.description,
-      heart: true
+      description: req.body.description
+      // heart: true
     }
   }, {
     sort: {_id: -1},

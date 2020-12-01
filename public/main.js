@@ -9,6 +9,22 @@ const overlayOff = document.getElementsByClassName("overlayOff")
 
 //user can save favorites, targeting textnodes in the listing, sending to backend
 //then gets saved to DB aka making clone of petlistings
+//clicking the heart runs a function in plain JS to find the textnodes in whichever listing,
+// then sends the info to backend so node can process and search in the
+// node is officeworker, update the document so that key value pair
+//
+// we want so the favorites are unique to the user and not overlap
+// what if we cloned the document and inserted a new key value pair so that it contains the user's email that they signed up with
+// when they go to the favorites page, it's using the find method of user local userEmail
+//
+// clone the document by finding the textnodes and sending it to the backend
+// so node could handle that info using the update method
+// but mongodb is set up so that if the docs don't meet the criteria in nodes
+// it will just automatically create one to meet the criteria in those parameters
+//
+// creating new doc containing the petname and useremail
+
+
 Array.from(heart).forEach(function(element) {
       element.addEventListener('click', function(){
         const imgPath = this.parentNode.parentNode.parentNode.childNodes[9].innerText
